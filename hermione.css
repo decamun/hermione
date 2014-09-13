@@ -17,4 +17,8 @@ body {
 .question {
 	background-color: 00FF00;
 	width: 50%;
+	background-color: #666666;
+}
+#questionWelcome {
+	background-color: #777777;
 }
