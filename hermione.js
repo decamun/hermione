@@ -4,7 +4,7 @@
 Questions = new Mongo.Collection("questions");
 
 if (Meteor.isClient) {
-<<<<<<< HEAD
+
   // counter starts at 0
   Session.setDefault("counter", 0);
 =======
