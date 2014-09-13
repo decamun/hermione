@@ -7,7 +7,7 @@ if (Meteor.isClient) {
 
   // counter starts at 0
   Session.setDefault("counter", 0);
-=======
+//=======
   //runs when someone clicks the button next to the question box
   Template.questionBoxTemplate.events({
     'click button': function () {
@@ -22,7 +22,7 @@ if (Meteor.isClient) {
   Template.questionBoardTemplate.questions = function () {
     return Questions.find({}, {sort: {score: -1, text: 1}}); //this is the magic
   };
->>>>>>> FETCH_HEAD
+//>>>>>>> FETCH_HEAD
 
   Template.questionTemplate.events({
       'click #upButton': function () {
@@ -35,14 +35,16 @@ if (Meteor.isClient) {
     }
   });
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
   Template.hello.events({
     'click': function () {
 
       // increment the counter when Submit button is clicked
       document.getElementById("Submit").onclick = function () { Session.set("counter", Session.get("counter") + 1); };
+    }
+  });
       
-=======
+//=======
   Template.questionTemplate.events({
       'click #downButton': function () {
       //when the button is clicked or something. Do things here.
@@ -59,7 +61,6 @@ if (Meteor.isClient) {
 
       //some quick code to uncomment if you want to delete things:
       //Questions.remove(this._id);
->>>>>>> FETCH_HEAD
     }
   });
 
