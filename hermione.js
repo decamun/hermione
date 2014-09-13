@@ -28,13 +28,24 @@ if (Meteor.isClient) {
 
   //runs to sort the list of questions and return them somehow <- (magic)
   Template.questionBoardTemplate.questions = function () {
-    return Questions.find({}, {sort: {upvotes: -1, text: -1}}); //this is the magic
+    return Questions.find({}, {sort: {upvotes: -1, text: 1}}); //this is the magic
   };
 
   Template.questionTemplate.events({
-    'click button': function () {
+      'click #upButton': function () {
       //when the button is clicked or something. Do things here.
       Questions.update(this._id, {$inc: {upvotes: 1}})
+
+
+      //some quick code to uncomment if you want to delete things:
+      //Questions.remove(this._id);
+    }
+  });
+
+  Template.questionTemplate.events({
+      'click #downButton': function () {
+      //when the button is clicked or something. Do things here.
+      Questions.update(this._id, {$inc: {downvotes: 1}})
 
 
       //some quick code to uncomment if you want to delete things:
