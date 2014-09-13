@@ -3,7 +3,12 @@
 
 Questions = new Mongo.Collection("questions");
 
+
+
 if (Meteor.isClient) {
+
+
+  Session.setDefault("questionsVoted", []);
 
   //runs when someone clicks the button next to the question box
   Template.questionBoxTemplate.events({
@@ -20,8 +25,15 @@ if (Meteor.isClient) {
     return Questions.find({}, {sort: {score: -1, text: 1}}); //this is the magic
   };
 
+  Template.questionTemplate.helpers({
+    hasVoted: function () {
+      var x = 5;
+      return Session.get("questionsVoted").indexOf(this._id) > -1 ;
+    }
+  });
+
   Template.questionTemplate.events({
-      'click #upButton': function () {
+    'click #upButton': function () {
       //when the button is clicked or something. Do things here.
       Questions.update(this._id, {$inc: {upvotes: 1}});
       Questions.update(this._id, {$inc: {score: 1}});
@@ -47,6 +59,12 @@ if (Meteor.isClient) {
 
       //some quick code to uncomment if you want to delete things:
       //Questions.remove(this._id);
+    }
+  });
+
+  Template.questionTemplate.events({
+    'click button': function () {
+      Session.set("questionsVoted", Session.get("questionsVoted").concat(this._id));
     }
   });
 

@@ -24,8 +24,12 @@
 
 <template name="questionTemplate">
 	<div class = "question">
+		
+		{{#if hasVoted}}
+		{{else}}
 		<div><button id="upButton">&#60;3</button></div>
-    	<button id="downButton">&#60;\3</button>
+		<button id="downButton">&#60;\3</button>
+		{{/if}}
 		<span class="questionText">{{text}}</span>
     	<span class="scoreSpan">score:{{score}}</span>
     	<span class="upVoteDownVote">^:{{upvotes}} v:{{downvotes}}</span>
