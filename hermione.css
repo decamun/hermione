@@ -12,7 +12,7 @@ body {
 
 .questionBoard {
 	width: 100%;
-	
+	position: right;
 }
 
 .question {
@@ -24,6 +24,7 @@ body {
 	
 	background-color: #00FF00;
 	width: 50%;
+	opacity: .7;
 }
 #questionWelcome {
 	background-color: #777777;
@@ -31,4 +32,5 @@ body {
 
 #hand-thing {
 	position: fixed;
+	z-index: -1;
 }
