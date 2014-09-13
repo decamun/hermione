@@ -30,15 +30,8 @@
 </template>
 
 <template name= "questionBoxTemplate">
- 	
- 	<div id="question">
- 		<p id="questionText">hello!!!</p>
- 	</div>
-
  	<div id="questionAsker">
- 		<textarea id = "questionBox" autofocus></textarea>
-
+ 		<textarea id = "questionBox" value = "Type your questions here!" onFocus="this.value=''"></textarea>
 	 	<button>Submit</button>
-	  	<p>You've pressed the button {{counter}} times.</p>
   	</div>
 </template>
