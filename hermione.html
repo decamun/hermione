@@ -1,9 +1,17 @@
 
 <head>
 	<title>hermione</title>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
 	<h1>Hermione</h1>
 	<h2>raise your hand!</h2>
   	
@@ -11,10 +19,13 @@
   	
 	{{> questionBoxTemplate}}
 
-	<img src="http://www.clipartbest.com/cliparts/4c9/b7x/4c9b7xgcE.png">
+	
 </body> 
 
+
+
 <template name="questionBoardTemplate">
+	<img id = "hand-thing" src="http://www.clipartbest.com/cliparts/4c9/b7x/4c9b7xgcE.png">
 	<div class = "questionBoard">
 		{{#each questions}}
 	      {{> questionTemplate}}
@@ -42,8 +53,6 @@
  		<textarea id = "questionBox" value = "Type your questions here!" onFocus="this.value=''"></textarea>
 	 	<button>Submit</button>
   	</div>
-
-  	<img src="http://www.clipartbest.com/cliparts/4c9/b7x/4c9b7xgcE.png">
 </template>
 
 
