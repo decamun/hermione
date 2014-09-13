@@ -54,7 +54,7 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
-    if(Questions.find().count === 0) {
+    if(Questions.find().count < 5) {
       Questions.insert({text: "This is an example question. Ask your own question by writing in the box below.", upvotes: 1, downvotes: 0, score: 1});
     }
   });

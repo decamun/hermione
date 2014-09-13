@@ -6,3 +6,15 @@ body {
 #questionAsker {
 	background-color: #555555;
 }
+
+.questionBoard {
+	background-color: FF0000;
+	position: relative;
+	width: 100%;
+	
+}
+
+.question {
+	background-color: 00FF00;
+	width: 50%;
+}
