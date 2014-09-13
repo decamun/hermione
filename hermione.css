@@ -1,11 +1,36 @@
 /* CSS declarations go here */
 body {
-	background-color: #3ca1bd;
+	background-color: #ffee55;
 }
 
 #questionAsker {
-	background-color: #666666;
+	background-color: #555555;
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+}
+
+.questionBoard {
+	width: 100%;
+	position: right;
+}
+
+.question {
+	height: 50px;
+
+	margin: 3px 3px 3px 3px;
+	/*border-color: #FF0000;*/
+	padding: 5px 5px 5px 5px;
+	
+	background-color: #00FF00;
+	width: 50%;
+	opacity: .7;
 }
 #questionWelcome {
 	background-color: #777777;
+}
+
+#hand-thing {
+	position: fixed;
+	z-index: -1;
 }

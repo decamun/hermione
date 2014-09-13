@@ -1,9 +1,15 @@
 
 <head>
 	<title>hermione</title>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
+<<<<<<< HEAD
 	<h1>Welcome to Meteor!</h1>
   	{{> hello}}
 </body> 
@@ -12,24 +18,47 @@
 
  	<div id = "questionWelcome"> 	
   	{{>questionBoardTemplate}}	
+=======
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+	<h1>Hermione</h1>
+	<h2>raise your hand!</h2>
+  	{{>questionBoardTemplate}}
+  	
+>>>>>>> FETCH_HEAD
 	{{> questionBoxTemplate}}
 	</div>
 
+<<<<<<< HEAD
 	<img src="http://www.clipartbest.com/cliparts/4c9/b7x/4c9b7xgcE.png">
 </template>
+=======
+	
+</body> 
+>>>>>>> FETCH_HEAD
+
+
 
 <template name="questionBoardTemplate">
+	<img id = "hand-thing" src="http://www.clipartbest.com/cliparts/4c9/b7x/4c9b7xgcE.png">
 	<div class = "questionBoard">
 		{{#each questions}}
 	      {{> questionTemplate}}
 	    {{/each}}
 	</div>
+	
 </template>
 
 <template name="questionTemplate">
-	<div id = "question">
+	<div class = "question">
+		
+		{{#if hasVoted}}
+		<span>Thanks for voting!</span>
+		{{else}}
 		<div><button id="upButton">&#60;3</button></div>
-    	<button id="downButton">&#60;\3</button>
+		<button id="downButton">&#60;\3</button>
+		{{/if}}
 		<span class="questionText">{{text}}</span>
     	<span class="scoreSpan">score:{{score}}</span>
     	<span class="upVoteDownVote">^:{{upvotes}} v:{{downvotes}}</span>
@@ -41,8 +70,6 @@
  		<textarea id = "questionBox" value = "Type your questions here!" onFocus="this.value=''"></textarea>
 	 	<button>Submit</button>
   	</div>
-
-  	<img src="http://www.clipartbest.com/cliparts/4c9/b7x/4c9b7xgcE.png">
 </template>
 
 
