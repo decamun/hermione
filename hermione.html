@@ -1,17 +1,23 @@
+
 <head>
 	<title>hermione</title>
 </head>
+
+
 <body>
-	<h1>Welcome  to Meteor!</h1>
+	<h1>Welcome to Meteor!</h1>
+
+	<div id = "questionAsker">
+ 		<form> Question: <input type="text" name="Question"><br></form>
+	 	<button>Click Me</button>
+	 	<p><i>I am an awesome Genie!</i></p>
+	  	<p>You've pressed the button {{counter}} times.</p>
+  	</div>
+
   	<img src="http://www.clipartbest.com/cliparts/4c9/b7x/4c9b7xgcE.png">
   	{{> hello}}
 </body> 
+
 <template name= "hello">
- 	<div id="questionAsker">
- 		<form>
-Question: <input type="text" name="Question"><br>
-</form>
-	 	<button>Click Me</button>
-	  	<p>You've pressed the button {{counter}} times.</p>
-  	</div>
+
 </template>
