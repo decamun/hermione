@@ -33,8 +33,15 @@ if (Meteor.isClient) {
   Template.questionTemplate.events({
       'click #downButton': function () {
       //when the button is clicked or something. Do things here.
+
+      //update the score and vote count
       Questions.update(this._id, {$inc: {downvotes: 1}});
       Questions.update(this._id, {$inc: {score: -1}});
+
+      //decide whether question is below threshold
+      if((this.downvotes / this.upvotes > 1.5) && this.downvotes > 5) {
+        Questions.remove(this._id);
+      }
 
 
       //some quick code to uncomment if you want to delete things:
