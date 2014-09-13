@@ -3,35 +3,30 @@
 	<title>hermione</title>
 </head>
 
-
 <body>
 	<h1>Welcome to Meteor!</h1>
-
-	<div id = "questionAsker">
- 		<form> Question: <input type="text" name="Question"><br></form>
-	 	<button>Click Me</button>
-	 	<p><i>I am an awesome Genie!</i></p>
-	  	<p>You've pressed the button {{counter}} times.</p>
-  	</div>
-
-  	<img src="http://www.clipartbest.com/cliparts/4c9/b7x/4c9b7xgcE.png">
   	{{> hello}}
 </body> 
 
 <template name= "hello">
-<<<<<<< HEAD
 
-=======
- 	
- 	<div id="question">
- 		<p id="questionText">hello!!!</p>
+ 	<div id = "questionWelcome">
+ 		<i>Please type your name and question below!</i>
  	</div>
 
- 	<div id="questionAsker">
- 		<textarea id = "questionBox" autofocus></textarea>
+ 	<div id = "questionAsker">
+		<i>What is your name?</i>
+ 		<form> First Name: <input type="text" name="firstName" size = 10></form>
+ 		<form> Last  Name: <input type="text" name="lastName" size = 10></form><br>
 
-	 	<button>Click Me</button>
+	 	<i>I am an awesome Genie. Ask your question!</i><br>
+	 	<textarea id = "questionBox" autofocus></textarea><br>
+	 	<input id = "Submit" type="submit" value="Submit">
+
 	  	<p>You've pressed the button {{counter}} times.</p>
   	</div>
->>>>>>> FETCH_HEAD
+
+  	<img src="http://www.clipartbest.com/cliparts/4c9/b7x/4c9b7xgcE.png">
 </template>
+
+

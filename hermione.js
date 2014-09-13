@@ -1,6 +1,6 @@
 if (Meteor.isClient) {
   // counter starts at 0
-  Session.setDefault("counter", 100) ;
+  Session.setDefault("counter", 0);
 
   Template.hello.helpers({
     counter: function () {
@@ -9,14 +9,16 @@ if (Meteor.isClient) {
   });
 
   Template.hello.events({
-    'click button': function () {
+    'click': function () {
 
-      // increment the counter when button is clicked
-      //alert(document.getElementById("questionBox").value); // "something something";// + counter + " times";
-      document.getElementById("questionText").innerHTML = document.getElementById("questionText").innerHTML + "<p>" + document.getElementById("questionBox").value + "</p>";
-      Session.set("counter", Session.get("counter") + 1);
+      // increment the counter when Submit button is clicked
+      document.getElementById("Submit").onclick = function () { Session.set("counter", Session.get("counter") + 1); };
+      
     }
   });
+
+
+
 }
 
 if (Meteor.isServer) {
@@ -24,3 +26,4 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
+
