@@ -21,7 +21,7 @@ if (Meteor.isClient) {
       // increment the counter when button is clicked
       //alert(document.getElementById("questionBox").value); // "something something";// + counter + " times";
       var questionText = document.getElementById("questionBox").value;
-      Questions.insert({text: questionText, upvotes: 1});
+      Questions.insert({text: questionText, upvotes: 1, downvotes: 0});
       Session.set("counter", Session.get("counter") + 1);
     }
   });
@@ -41,12 +41,21 @@ if (Meteor.isClient) {
       //Questions.remove(this._id);
     }
   });
+
+
+  //returns the number of upvotes subtracted from the number of downvotes.
+  Template.questionTemplate.helpers({
+    score: function () {
+      var question = Questions.findOne(this._id);
+      return question.upvotes - question.downvotes;
+    }
+  });
 }
 
 //run at startup
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
-    Questions.insert({text: "Lorem ipsem blah blah blah", upvotes: 1});
+    Questions.insert({text: "Lorem ipsem blah blah blah", upvotes: 1, downvotes: 0});
   });
 }
