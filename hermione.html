@@ -22,11 +22,11 @@
 
 <template name="questionTemplate">
 	<div id = "question">
-		<div><button id="upButton">^</button></div>
-    	<button id="downButton">v</button>
+		<div><button id="upButton">&#60;3</button></div>
+    	<button id="downButton">&#60;\3</button>
 		<span class="questionText">{{text}}</span>
-    	<span class="scoreSpan">{{score}}</span>
-    	<span class="upVoteDownVote">{{upvotes}} - {{downvotes}}</span>
+    	<span class="scoreSpan">score:{{score}}</span>
+    	<span class="upVoteDownVote">^:{{upvotes}} v:{{downvotes}}</span>
 	</div>
 </template>
 
