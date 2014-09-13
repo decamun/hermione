@@ -7,8 +7,13 @@
   	{{> hello}}
 </body> 
 <template name= "hello">
+ 	
+ 	<div id="question">
+ 		<p id="questionText">hello!!!</p>
+ 	</div>
+
  	<div id="questionAsker">
- 		<textarea autofocus></textarea>
+ 		<textarea id = "questionBox" autofocus></textarea>
 	 	<button>Click Me</button>
 	  	<p>You've pressed the button {{counter}} times.</p>
   	</div>
