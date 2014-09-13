@@ -4,6 +4,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
 	<h1>Welcome to Meteor!</h1>
   	{{> hello}}
 </body> 
@@ -24,6 +25,40 @@
 	 	<input id = "Submit" type="submit" value="Submit">
 
 	  	<p>You've pressed the button {{counter}} times.</p>
+=======
+	<h1>Hermione</h1>
+	<h2>raise your hand!</h2>
+  	
+  	{{>questionBoardTemplate}}
+  	
+	{{> questionBoxTemplate}}
+
+	<img src="http://www.clipartbest.com/cliparts/4c9/b7x/4c9b7xgcE.png">
+</body> 
+
+<template name="questionBoardTemplate">
+	<div class = "questionBoard">
+		{{#each questions}}
+	      {{> questionTemplate}}
+	    {{/each}}
+	</div>
+</template>
+
+<template name="questionTemplate">
+	<div id = "question">
+		<div><button id="upButton">&#60;3</button></div>
+    	<button id="downButton">&#60;\3</button>
+		<span class="questionText">{{text}}</span>
+    	<span class="scoreSpan">score:{{score}}</span>
+    	<span class="upVoteDownVote">^:{{upvotes}} v:{{downvotes}}</span>
+	</div>
+</template>
+
+<template name= "questionBoxTemplate">
+ 	<div id="questionAsker">
+ 		<textarea id = "questionBox" value = "Type your questions here!" onFocus="this.value=''"></textarea>
+	 	<button>Submit</button>
+>>>>>>> FETCH_HEAD
   	</div>
 
   	<img src="http://www.clipartbest.com/cliparts/4c9/b7x/4c9b7xgcE.png">
