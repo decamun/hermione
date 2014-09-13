@@ -25,13 +25,14 @@ if (Meteor.isClient) {
     return Questions.find({}, {sort: {score: -1, text: 1}}); //this is the magic
   };
 
+  //returns whether or not the question has been voted on before
   Template.questionTemplate.helpers({
     hasVoted: function () {
-      var x = 5;
       return Session.get("questionsVoted").indexOf(this._id) > -1 ;
     }
   });
 
+  
   Template.questionTemplate.events({
     'click #upButton': function () {
       //when the button is clicked or something. Do things here.
