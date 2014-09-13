@@ -34,9 +34,11 @@ if (Meteor.isClient) {
   Template.questionTemplate.events({
     'click button': function () {
       //when the button is clicked or something. Do things here.
-      //alert(this._id);
-      //Questions.remove(this._id);
       Questions.update(this._id, {$inc: {upvotes: 1}})
+
+
+      //some quick code to uncomment if you want to delete things:
+      //Questions.remove(this._id);
     }
   });
 }
