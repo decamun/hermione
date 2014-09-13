@@ -3,10 +3,32 @@
 </head>
 <body>
 	<h1>Welcome  to Meteor!</h1>
-  	<img src="http://www.clipartbest.com/cliparts/4c9/b7x/4c9b7xgcE.png">
-  	{{> hello}}
+  	
+  	{{>questionBoardTemplate}}
+  	
+	{{> questionBoxTemplate}}
+
+	<img src="http://www.clipartbest.com/cliparts/4c9/b7x/4c9b7xgcE.png">
 </body> 
-<template name= "hello">
+
+<template name="questionBoardTemplate">
+	<div class = "questionBoard">
+		{{#each questions}}
+	      {{> questionTemplate}}
+	    {{/each}}
+	</div>
+</template>
+
+<template name="questionTemplate">
+	<div id = "question">
+		<span class="text">{{text}}</span>
+    	<span class="upvotes">{{upvotes}}</span>
+    	<button>Up</button>
+    	<button>Down</button>
+	</div>
+</template>
+
+<template name= "questionBoxTemplate">
  	
  	<div id="question">
  		<p id="questionText">hello!!!</p>
