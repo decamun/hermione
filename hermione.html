@@ -37,24 +37,26 @@
 	<div class = "question">
 		
 		{{#if hasVoted}}
-		<button id="upButtonVoted">&#60;3 --</button>
-		<button id="downButtonVoted">&#60;\ --3</button>
-		<button id="answeredButtonVoted">:) --</button>
+			<button id="upButtonVoted">&#60;3</button>
+			<button id="downButtonVoted">&#60;*3</button>
+			<button id="answeredButtonVoted">:)</button>
 		{{else}}
-		<button id="upButton">&#60;3</button>
-		<button id="downButton">&#60;\3</button>
-		<button id="answeredButton">:)</button>
+			<button id="upButton">&#60;3</button>
+			<button id="downButton">&#60;\3</button>
+			<button id="answeredButton">:)</button>
 		{{/if}}
-		<span class="questionText">{{text}}</span>
-    	<span class="scoreSpan">score:{{score}}</span>
-    	<span class="upVoteDownVote">^:{{upvotes}} v:{{downvotes}}</span>
+			<span class="questionText">{{text}}</span>
+	    	<span class="scoreSpan">score:{{score}}</span>
+	    	<span class="upVoteDownVote">^:{{upvotes}} v:{{downvotes}}</span>
 	</div>
 </template>
 
 <template name= "questionBoxTemplate">
  	<div id="questionAsker">
- 		<textarea id = "questionBox" value = "Type your questions here!" onFocus="this.value=''"></textarea>
-	 	<button>Submit</button>
+	 	<form id="questionForm">
+	 		<input type ="text" id = "questionBox" value = "Type your questions here!" onFocus="this.value=''"/>
+	 		<input type="button" id="submit" value="Ask"/>
+	 	</form>
   	</div>
 </template>
 

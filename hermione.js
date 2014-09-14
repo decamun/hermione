@@ -12,7 +12,7 @@ if (Meteor.isClient) {
   Session.setDefault("questionsVoted", []);
   //runs when someone clicks the button next to the question box
   Template.questionBoxTemplate.events({
-    'click button': function () {
+    'click #submit': function () {
       // increment the counter when button is clicked
       //alert(document.getElementById("questionBox").value); // "something something";// + counter + " times";
       var questionText = document.getElementById("questionBox").value;
@@ -66,7 +66,7 @@ if (Meteor.isClient) {
   });
 
   Template.questionTemplate.events({
-    'click #submit': function () {
+    'click button': function () {
       Session.set("questionsVoted", Session.get("questionsVoted").concat(this._id));
     }
   });
