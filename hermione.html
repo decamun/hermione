@@ -22,6 +22,7 @@
 		<h2 id= "header2Name">Raise your hand! </h2>
 	</div>
   	{{>questionBoardTemplate}}
+  	{{>answeredBoardTemplate}}
 	{{> questionBoxTemplate}}
 </body> 
 
@@ -29,6 +30,7 @@
 
 <template name="questionBoardTemplate">
 	<div class = "questionBoard">
+		<h1 id="header1Name">Open Questions</h1>
 		{{#each questions}}
 	      {{> questionTemplate}}
 	    {{/each}}
@@ -37,8 +39,19 @@
 	
 </template>
 
+<template name="answeredBoardTemplate">
+	<div class = "questionBoard" id="answeredBoard">
+		<h1 id="header2Name">Answered Questions</h1>
+		{{#each answered}}
+	      {{> questionTemplate}}
+	    {{/each}}
+	    <div style = "height: 55px"></div>
+	</div>
+	
+</template>
+
 <template name="questionTemplate">
-	<div class = "question">
+	<div class = "question" id= {{#if inQuestions}}question{{else}}answered{{/if}} >
 		
 		<table class = "questionTable">
   			<tr>
@@ -75,10 +88,10 @@
 						<span style="font-size: 200%">"</span>
 					</div>
 				</th>
-		  </tr>
-		  <tr>
+			</tr>
+			<tr>
 		  		<th>{{score}}</th>
-		  </tr>
+		  	</tr>
 		</table>
 	    	
 	    	

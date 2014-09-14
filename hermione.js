@@ -2,7 +2,7 @@
 //create dynamic list of questions
 
 Questions = new Mongo.Collection("questions");
-
+Answered = new Mongo.Collection("answered");
 
 function submit() {
     var questionText = document.getElementById("questionBox").value;
@@ -32,6 +32,17 @@ if (Meteor.isClient) {
     return Questions.find({}, {sort: {score: -1, text: 1}}); //this is the magic
   };
 
+  //runs to sort the list of questions and return them somehow <- (magic)
+  Template.answeredBoardTemplate.answered = function () {
+    return Answered.find({}, {sort: {score: -1, text: 1}}); //this is (Still) the magic
+  };
+
+  //returns whether this is in Questions.
+  Template.questionTemplate.helpers({
+    inQuestions: function () {
+      return Questions.find(this._id).count() > 0;
+    }
+  });
 
   //returns whether or not the question has been voted on before
   Template.questionTemplate.helpers({
@@ -86,6 +97,9 @@ Template.questionTemplate.helpers({
 
       //decide whether question is fully answered
       if(this.answered / this.upvotes > 0.25 && this.answered > 5) {
+        Answered.insert(Questions.findOne(this._id));
+        Answered.insert({text: "This is an example question. Ask your own question by writing in the box below.", upvotes: 1, downvotes: 0,answered: 0, score: 1});
+
         Questions.remove(this._id);
       }
     }
@@ -150,6 +164,10 @@ if (Meteor.isServer) {
     // code to run on server at startup
     if(Questions.find().count < 1) {
       Questions.insert({text: "This is an example question. Ask your own question by writing in the box below.", upvotes: 1, downvotes: 0,answered: 0, score: 1});
+    }
+
+    if(Answered.find().count < 1) {
+      Answered.insert({text: "This is an example question. Ask your own question by writing in the box below.", upvotes: 1, downvotes: 0,answered: 0, score: 1});
     }
   });
 }

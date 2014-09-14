@@ -35,21 +35,30 @@ body {
 	height: 50px;
 	padding: 10px 10px 10px 10px;
 	opacity: .8;
+	z-index: 100;
 }
 
 .questionBoard {
-	width: 50%;
+	z-index: 1;
+	width: 45%;
 	position: absolute;
 	right: 23px;
 	-webkit-transition: width .75s; /* For Safari 3.1 to 6.0 */
     transition: width .75s;
 }
-.questionTable {
-	position: absolute;
-	vertical-align: right;
-}
 
 .questionBoard:hover {
+	width: 75%;
+}
+
+#answeredBoard {
+	z-index: -1;
+	width:50%;
+	-webkit-transition: width .75, z-index .25s; /* For Safari 3.1 to 6.0 */
+    transition: width .75, z-index .25s;
+}
+
+#answeredBoard:hover {
 	width: 75%;
 }
 
@@ -58,6 +67,7 @@ body {
 	height: 25px;
 }
 .question {
+	z-index: 1;
 	position: relative;
 	right: 0px;
 	top: 0px;
@@ -68,10 +78,23 @@ body {
 	padding: 15px 15px 15px 15px;
 	background-color: #CBEEF2;
 	width: 100%;
-	opacity: .7;
+	opacity: .8;
 	box-shadow: -5px 5px 2px #888888;
 	-webkit-transition: background-color .5s, opacity .5s, color .5s, box-shadow .25s, right 0.25s, top .25s; /* For Safari 3.1 to 6.0 */
     transition: background-color .5s, opacity .5s, color .5s, box-shadow .25s, right 0.25s, top 0.25s;
+}
+
+
+.question#answered {
+	top: 40px;
+	background-color: #FFFFFF;
+	color: #000000;
+	-webkit-transition: width .25s; /* For Safari 3.1 to 6.0 */
+    transition: width .25s;
+}
+
+.question#answered:hover { 
+	width: 35%;
 }
 
 .question:hover {
@@ -81,6 +104,7 @@ body {
 	box-shadow: -10px 10px 5px #888888;
 	right: -3px;
 	top: -3px;
+	z-index: 2;
 }
 
 .questionTextBox {
@@ -93,8 +117,8 @@ body {
 }
 
 #questionForm {
-	position: fixed;
-	left: 0px;
+	position: absolute;
+	left: 25%;
 	bottom: 0px;
 	width: 100%;
 }
