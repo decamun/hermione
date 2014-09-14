@@ -4,6 +4,13 @@ body {
 	font-family: Avenir;
 }
 
+#appName {
+	font-family: serif;
+	font-size: 400%;
+	font-style: oblique;
+
+}
+
 #questionAsker {
 	background-color: #000000;
 	position: fixed;
