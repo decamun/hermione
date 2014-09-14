@@ -59,9 +59,15 @@ if (Meteor.isClient) {
       }
 
 
+      
+
+    }
+  });
+
+  Template.questionTemplate.events({
+    'click div': function () {
       //some quick code to uncomment if you want to delete things:
       //Questions.remove(this._id);
-
     }
   });
 
