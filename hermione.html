@@ -28,6 +28,7 @@
 		{{#each questions}}
 	      {{> questionTemplate}}
 	    {{/each}}
+	    <div style = "height: 55px"></div>
 	</div>
 	
 </template>
@@ -36,11 +37,13 @@
 	<div class = "question">
 		
 		{{#if hasVoted}}
-		<div><button id="upButtonVoted">&#60;3</button></div>
-		<button id="downButtonVoted">&#60;\3</button>
+		<button id="upButtonVoted">&#60;3 --</button>
+		<button id="downButtonVoted">&#60;\ --3</button>
+		<button id="answeredButtonVoted">:) --</button>
 		{{else}}
-		<div><button id="upButton">&#60;3</button></div>
+		<button id="upButton">&#60;3</button>
 		<button id="downButton">&#60;\3</button>
+		<button id="answeredButton">:)</button>
 		{{/if}}
 		<span class="questionText">{{text}}</span>
     	<span class="scoreSpan">score:{{score}}</span>

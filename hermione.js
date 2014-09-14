@@ -66,7 +66,7 @@ if (Meteor.isClient) {
   });
 
   Template.questionTemplate.events({
-    'click button': function () {
+    'click #submit': function () {
       Session.set("questionsVoted", Session.get("questionsVoted").concat(this._id));
     }
   });
