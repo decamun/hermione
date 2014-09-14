@@ -60,7 +60,14 @@ Template.questionTemplate.helpers({
       //when the button is clicked or something. Do things here.
       Questions.update(this._id, {$inc: {upvotes: 1}});
       Questions.update(this._id, {$inc: {score: 1}});
- Session.set("questionsUpvoted", Session.get("questionsUpvoted").concat(this._id));
+      Session.set("questionsUpvoted", Session.get("questionsUpvoted").concat(this._id));
+      debugger;
+
+      var downvotedindex = Session.get("questionsDownvoted").indexOf(this._id);
+      if(downvotedindex > -1) {
+        Questions.update(this._id, {$inc: {downvotes: -1}});
+        Session.set("questionsDownvoted", Session.get("questionsDownvoted").splice(downvotedindex, 1));
+      }
       //some quick code to uncomment if you want to delete things:
       //Questions.remove(this._id);
     }
@@ -71,7 +78,7 @@ Template.questionTemplate.helpers({
       //when the button is clicked or something. Do things here.
       Questions.update(this._id, {$inc: {answered: 1}});
       //Questions.update(this._id, {$inc: {score: 1}});
- Session.set("questionsAnswered", Session.get("questionsAnswered").concat(this._id));
+      Session.set("questionsAnswered", Session.get("questionsAnswered").concat(this._id));
       //some quick code to uncomment if you want to delete things:
       //Questions.remove(this._id);
     }
@@ -84,7 +91,14 @@ Template.questionTemplate.helpers({
       //update the score and vote count
       Questions.update(this._id, {$inc: {downvotes: 1}});
       Questions.update(this._id, {$inc: {score: -1}});
- Session.set("questionsDownvoted", Session.get("questionsDownvoted").concat(this._id));
+      Session.set("questionsDownvoted", Session.get("questionsDownvoted").concat(this._id));
+
+      var upvotedindex = Session.get("questionsUpvoted").indexOf(this._id);
+      if(upvotedindex > -1) {
+        Questions.update(this._id, {$inc: {downvotes: -1}});
+        Session.set("questionsUpvoted", Session.get("questionsUpvoted").splice(upvotedindex, 1));
+      }
+
       //decide whether question is below threshold
       if((this.downvotes / this.upvotes > 1.5) && this.downvotes > 5) {
         Questions.remove(this._id);
