@@ -1,0 +1,15 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "persistent-session": {}
+    },
+    "packages": {
+      "persistent-session": {
+        "git": "https://github.com/okgrow/meteor-persistent-session.git",
+        "tag": "v0.1.4",
+        "commit": "38c104fe4f9af24d16047d344af44e38e0a9e7a9"
+      }
+    }
+  }
+}

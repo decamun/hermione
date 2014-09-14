@@ -69,7 +69,7 @@ body {
 	background-color: #CBEEF2;
 	width: 100%;
 	opacity: .7;
-	box-shadow: -10px 10px 5px #888888;
+	box-shadow: -5px 5px 2px #888888;
 	-webkit-transition: background-color .5s, opacity .5s, color .5s, box-shadow .25s, right 0.25s, top .25s; /* For Safari 3.1 to 6.0 */
     transition: background-color .5s, opacity .5s, color .5s, box-shadow .25s, right 0.25s, top 0.25s;
 }
@@ -78,9 +78,9 @@ body {
 	opacity: 0.9;
 	background-color: #000000; /* #CBE4F2 */
 	color: #FFFFFF;
-	box-shadow: -15px 15px 7px #888888;
-	right: -5px;
-	top: -5px;
+	box-shadow: -10px 10px 5px #888888;
+	right: -3px;
+	top: -3px;
 }
 
 .questionTextBox {

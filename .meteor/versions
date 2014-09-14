@@ -1,3 +1,4 @@
+amplify@1.0.0
 application-configuration@1.0.1
 autopublish@1.0.0
 autoupdate@1.0.6
@@ -29,6 +30,7 @@ minimongo@1.0.2
 mongo@1.0.4
 observe-sequence@1.0.2
 ordered-dict@1.0.0
+persistent-session@0.0.0
 random@1.0.0
 reactive-dict@1.0.2
 reactive-var@1.0.1
