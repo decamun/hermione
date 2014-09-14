@@ -7,15 +7,9 @@ Questions = new Mongo.Collection("questions");
 
 if (Meteor.isClient) {
 
-<<<<<<< HEAD
-  // counter starts at 0
-  Session.setDefault("counter", 0);
-//=======
-=======
+
 
   Session.setDefault("questionsVoted", []);
-
->>>>>>> FETCH_HEAD
   //runs when someone clicks the button next to the question box
   Template.questionBoxTemplate.events({
     'click button': function () {
@@ -30,10 +24,7 @@ if (Meteor.isClient) {
   Template.questionBoardTemplate.questions = function () {
     return Questions.find({}, {sort: {score: -1, text: 1}}); //this is the magic
   };
-<<<<<<< HEAD
-//>>>>>>> FETCH_HEAD
-=======
->>>>>>> FETCH_HEAD
+
 
   //returns whether or not the question has been voted on before
   Template.questionTemplate.helpers({
@@ -54,19 +45,6 @@ if (Meteor.isClient) {
     }
   });
 
-<<<<<<< HEAD
-//<<<<<<< HEAD
-  Template.hello.events({
-    'click': function () {
-
-      // increment the counter when Submit button is clicked
-      document.getElementById("Submit").onclick = function () { Session.set("counter", Session.get("counter") + 1); };
-    }
-  });
-      
-//=======
-=======
->>>>>>> FETCH_HEAD
   Template.questionTemplate.events({
       'click #downButton': function () {
       //when the button is clicked or something. Do things here.
@@ -83,15 +61,13 @@ if (Meteor.isClient) {
 
       //some quick code to uncomment if you want to delete things:
       //Questions.remove(this._id);
-<<<<<<< HEAD
-=======
+
     }
   });
 
   Template.questionTemplate.events({
     'click button': function () {
       Session.set("questionsVoted", Session.get("questionsVoted").concat(this._id));
->>>>>>> FETCH_HEAD
     }
   });
 
