@@ -71,18 +71,31 @@ Template.questionTemplate.helpers({
       //when the button is clicked or something. Do things here.
       Questions.update(this._id, {$inc: {upvotes: 1}});
       Questions.update(this._id, {$inc: {score: 1}});
+      Answered.update(this._id, {$inc: {upvotes: 1}});
+      Answered.update(this._id, {$inc: {score: 1}});
       Session.set("questionsUpvoted", Session.get("questionsUpvoted").concat(this._id));
 
 //redundant shit
       var downvotedindex = Session.get("questionsDownvoted").indexOf(this._id);
       if(downvotedindex > -1) {
         Questions.update(this._id, {$inc: {downvotes: -1}});
+        Answered.update(this._id, {$inc: {downvotes: -1}});
         var downvotedSet = Session.get("questionsDownvoted");
         downvotedSet.splice(downvotedindex, 1);
         Session.set("questionsDownvoted", downvotedSet);
       }
       //some quick code to uncomment if you want to delete things:
       //Questions.remove(this._id);
+      //Answered.remove(this._id);
+    }
+  });
+
+  Template.questionTemplate.events({
+    'click #upButtonVoted': function () {
+
+      //some quick code to uncomment if you want to delete things:
+      //Questions.remove(this._id);
+      //Answered.remove(this._id);
     }
   });
 
@@ -90,18 +103,19 @@ Template.questionTemplate.helpers({
     'click #answeredButton': function () {
       //when the button is clicked or something. Do things here.
       Questions.update(this._id, {$inc: {answered: 1}});
+      Answered.update(this._id, {$inc: {answered: 1}});
       //Questions.update(this._id, {$inc: {score: 1}});
       Session.set("questionsAnswered", Session.get("questionsAnswered").concat(this._id));
       //some quick code to uncomment if you want to delete things:
       //Questions.remove(this._id);
 
       //decide whether question is fully answered
-      if(this.answered / this.upvotes > 0.25 && this.answered > 5) {
+      //if(this.answered / this.upvotes > 0.25 && this.answered > 5) {
         Answered.insert(Questions.findOne(this._id));
         Answered.insert({text: "This is an example question. Ask your own question by writing in the box below.", upvotes: 1, downvotes: 0,answered: 0, score: 1});
 
         Questions.remove(this._id);
-      }
+      //}
     }
   });
 
@@ -112,6 +126,8 @@ Template.questionTemplate.helpers({
       //update the score and vote count
       Questions.update(this._id, {$inc: {downvotes: 1}});
       Questions.update(this._id, {$inc: {score: -1}});
+      Answered.update(this._id, {$inc: {downvotes: 1}});
+      Answered.update(this._id, {$inc: {score: -1}});
       Session.set("questionsDownvoted", Session.get("questionsDownvoted").concat(this._id));
 
 
@@ -119,6 +135,7 @@ Template.questionTemplate.helpers({
       var upvotedindex = Session.get("questionsUpvoted").indexOf(this._id);
       if(upvotedindex > -1) {
         Questions.update(this._id, {$inc: {upvotes: -1}});
+        Answered.update(this._id, {$inc: {upvotes: -1}});
         var upvotedSet = Session.get("questionsUpvoted");
         upvotedSet.splice(upvotedindex, 1);
         Session.set("questionsUpvoted", upvotedSet);
