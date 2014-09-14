@@ -12,6 +12,7 @@ body {
 	width: 26%;
 	right: 77%;
 	text-align: right;
+	padding-right: 3px;
 }
 
 #header1Name {
@@ -43,6 +44,10 @@ body {
 	-webkit-transition: width .75s; /* For Safari 3.1 to 6.0 */
     transition: width .75s;
 }
+.questionTable {
+	position: absolute;
+	vertical-align: right;
+}
 
 .questionBoard:hover {
 	width: 75%;
@@ -53,6 +58,9 @@ body {
 	height: 25px;
 }
 .question {
+	position: relative;
+	right: 0px;
+	top: 0px;
 	height: auto;
 	min-height: 50px;
 	font-size: 150%;
@@ -61,14 +69,18 @@ body {
 	background-color: #CBEEF2;
 	width: 100%;
 	opacity: .7;
-	-webkit-transition: background-color .5s, opacity .5s, color .5s; /* For Safari 3.1 to 6.0 */
-    transition: background-color .5s, opacity .5s, color .5s;
+	box-shadow: -10px 10px 5px #888888;
+	-webkit-transition: background-color .5s, opacity .5s, color .5s, box-shadow .25s, right 0.25s, top .25s; /* For Safari 3.1 to 6.0 */
+    transition: background-color .5s, opacity .5s, color .5s, box-shadow .25s, right 0.25s, top 0.25s;
 }
 
 .question:hover {
 	opacity: 0.9;
 	background-color: #000000; /* #CBE4F2 */
 	color: #FFFFFF;
+	box-shadow: -15px 15px 7px #888888;
+	right: -5px;
+	top: -5px;
 }
 
 .questionTextBox {

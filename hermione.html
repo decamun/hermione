@@ -40,8 +40,9 @@
 <template name="questionTemplate">
 	<div class = "question">
 		
-		<table>
+		<table class = "questionTable">
   			<tr>
+  				
 
 		    	{{#if hasVotedUp}}
 					<th width="25px"><img class = "icon" id="upButtonVoted" src="/heart-template-full.gif"></th>
@@ -67,7 +68,7 @@
 					<th width="25px"><img class = "icon" id="answeredButton" src="/check.gif"/></th>
 				{{/if}}
 
-		    	<th height="100%" align="left">
+				<th height="100%" align="left">
 		    		<div class="questionTextBox">
 						<span style="font-size: 200%">"</span>
 						<span class="questionText">{{text}}</span>
@@ -75,9 +76,10 @@
 					</div>
 				</th>
 		  </tr>
+		  <tr>
+		  		<th>{{score}}</th>
+		  </tr>
 		</table>
-
-		<span class="scoreSpan" style="position:absolute; bottom:0px">score:{{score}} ^:{{upvotes}} v:{{downvotes}}</span>
 	    	
 	    	
 	</div>
