@@ -3,6 +3,10 @@
 
 Questions = new Mongo.Collection("questions");
 
+function submit() {
+    var questionText = document.getElementById("questionBox").value;
+    Questions.insert({text: questionText, upvotes: 1, downvotes: 0, score: 1});
+}
 
 
 if (Meteor.isClient) {
@@ -15,8 +19,7 @@ if (Meteor.isClient) {
     'click #submit': function () {
       // increment the counter when button is clicked
       //alert(document.getElementById("questionBox").value); // "something something";// + counter + " times";
-      var questionText = document.getElementById("questionBox").value;
-      Questions.insert({text: questionText, upvotes: 1, downvotes: 0, score: 1});
+      submit();
     }
   });
 
@@ -57,12 +60,18 @@ if (Meteor.isClient) {
       if((this.downvotes / this.upvotes > 1.5) && this.downvotes > 5) {
         Questions.remove(this._id);
       }
-
-
-      
-
     }
   });
+
+
+
+  document.onkeydown=function(){
+    if(window.event.keyCode=='13'){
+        submit();
+    }
+  }
+
+  
 
   Template.questionTemplate.events({
     'click div': function () {
