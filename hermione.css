@@ -7,11 +7,13 @@ body {
 	background-attachment: fixed;
 }
 
-#appName {
-	font-family: serif;
-	font-size: 400%;
-	font-style: oblique;
+#header1Name {
+	color: #ffffff;
+}
 
+#header2Name {
+	font-family: sans-serif;
+	font-size: 260%;
 }
 
 #questionAsker {
