@@ -80,6 +80,8 @@ Template.questionTemplate.helpers({
       if(downvotedindex > -1) {
         Questions.update(this._id, {$inc: {downvotes: -1}});
         Answered.update(this._id, {$inc: {downvotes: -1}});
+        Questions.update(this._id, {$inc: {score: 1}});
+        Answered.update(this._id, {$inc: {score: 1}});
         var downvotedSet = Session.get("questionsDownvoted");
         downvotedSet.splice(downvotedindex, 1);
         Session.set("questionsDownvoted", downvotedSet);
@@ -110,12 +112,12 @@ Template.questionTemplate.helpers({
       //Questions.remove(this._id);
 
       //decide whether question is fully answered
-      //if(this.answered / this.upvotes > 0.25 && this.answered > 5) {
+      if(this.answered / this.upvotes > 0.25 && this.answered > 5) {
         Answered.insert(Questions.findOne(this._id));
         Answered.insert({text: "This is an example question. Ask your own question by writing in the box below.", upvotes: 1, downvotes: 0,answered: 0, score: 1});
 
         Questions.remove(this._id);
-      //}
+      }
     }
   });
 
@@ -136,6 +138,8 @@ Template.questionTemplate.helpers({
       if(upvotedindex > -1) {
         Questions.update(this._id, {$inc: {upvotes: -1}});
         Answered.update(this._id, {$inc: {upvotes: -1}});
+        Questions.update(this._id, {$inc: {score: -1}});
+        Answered.update(this._id, {$inc: {score: -1}});
         var upvotedSet = Session.get("questionsUpvoted");
         upvotedSet.splice(upvotedindex, 1);
         Session.set("questionsUpvoted", upvotedSet);
