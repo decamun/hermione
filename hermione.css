@@ -54,12 +54,17 @@ body {
 
 #questionWelcome {
 	background-color: #777777;
+	font: italic;
 }
 
 #questionForm {
 	position: fixed;
 	left: 0px;
 	bottom: 0px;
+}
+
+#questionBox {
+	font: italic;
 }
 
 #hand-thing {
