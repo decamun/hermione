@@ -3,20 +3,24 @@
 
 Questions = new Mongo.Collection("questions");
 
-
+var x = false;
 
 if (Meteor.isClient) {
 
 
 
   Session.setDefault("questionsVoted", []);
+  Session.setDefault("questionsUpvoted", []);
+  Session.setDefault("questionsDownvoted", []);
+    Session.setDefault("questionsAnswered", []);
+
   //runs when someone clicks the button next to the question box
   Template.questionBoxTemplate.events({
     'click #submit': function () {
       // increment the counter when button is clicked
       //alert(document.getElementById("questionBox").value); // "something something";// + counter + " times";
       var questionText = document.getElementById("questionBox").value;
-      Questions.insert({text: questionText, upvotes: 1, downvotes: 0, score: 1});
+      Questions.insert({text: questionText, upvotes: 1, downvotes: 0,answered: 0, score: 1});
     }
   });
 
@@ -28,18 +32,43 @@ if (Meteor.isClient) {
 
   //returns whether or not the question has been voted on before
   Template.questionTemplate.helpers({
-    hasVoted: function () {
-      return Session.get("questionsVoted").indexOf(this._id) > -1 ;
+    hasVotedUp: function () {
+
+      return Session.get("questionsUpvoted").indexOf(this._id) > -1 ;
     }
   });
 
+Template.questionTemplate.helpers({
+    hasVotedDown: function () {
+ 
+      return Session.get("questionsDownvoted").indexOf(this._id) > -1 ;
+    }
+  });
   
+Template.questionTemplate.helpers({
+    hasAnswered: function () {
+ 
+      return Session.get("questionsAnswered").indexOf(this._id) > -1 ;
+    }
+  });
+
   Template.questionTemplate.events({
     'click #upButton': function () {
       //when the button is clicked or something. Do things here.
       Questions.update(this._id, {$inc: {upvotes: 1}});
       Questions.update(this._id, {$inc: {score: 1}});
+ Session.set("questionsUpvoted", Session.get("questionsUpvoted").concat(this._id));
+      //some quick code to uncomment if you want to delete things:
+      //Questions.remove(this._id);
+    }
+  });
 
+  Template.questionTemplate.events({
+    'click #answeredButton': function () {
+      //when the button is clicked or something. Do things here.
+      Questions.update(this._id, {$inc: {answered: 1}});
+      //Questions.update(this._id, {$inc: {score: 1}});
+ Session.set("questionsAnswered", Session.get("questionsAnswered").concat(this._id));
       //some quick code to uncomment if you want to delete things:
       //Questions.remove(this._id);
     }
@@ -52,7 +81,7 @@ if (Meteor.isClient) {
       //update the score and vote count
       Questions.update(this._id, {$inc: {downvotes: 1}});
       Questions.update(this._id, {$inc: {score: -1}});
-
+ Session.set("questionsDownvoted", Session.get("questionsDownvoted").concat(this._id));
       //decide whether question is below threshold
       if((this.downvotes / this.upvotes > 1.5) && this.downvotes > 5) {
         Questions.remove(this._id);
@@ -80,7 +109,7 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
     if(Questions.find().count < 1) {
-      Questions.insert({text: "This is an example question. Ask your own question by writing in the box below.", upvotes: 1, downvotes: 0, score: 1});
+      Questions.insert({text: "This is an example question. Ask your own question by writing in the box below.", upvotes: 1, downvotes: 0,answered: 0, score: 1});
     }
   });
 }

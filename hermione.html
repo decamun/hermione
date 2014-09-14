@@ -38,14 +38,30 @@
 		
 		<table>
   			<tr>
-		    	{{#if hasVoted}}
+		    	{{#if hasVotedUp}}
 					<th width="25px"><img class = "icon" id="upButtonVoted" src="/heart-template-full.gif"></th>
-					<th width="25px"><img class = "icon" id="downButtonVoted" src="/x-mark-filled.gif"/></th>
-					<th width="25px"><img class = "icon" id="answeredButtonVoted" src="/check-filled.gif"/></th>
+
 				{{else}}
 					<th width="25px"><img class = "icon" id="upButton" src="/heart-template--not-full.gif"/></th>
+
+				{{/if}}
+
+				{{#if hasVotedDown}}
+					<th width="25px"><img class = "icon" id="downButtonVoted" src="/x-mark-filled.gif"/></th>
+
+				{{else}}
+
 					<th width="25px"><img class = "icon" id="downButton" src="/x-mark.gif"/></th>
+
+				{{/if}}
+
+				{{#if hasAnswered}}
+					<th width="25px"><img class = "icon" id="answeredButtonVoted" src="/check-filled.gif"/></th>
+
+				{{else}}
+
 					<th width="25px"><img class = "icon" id="answeredButton" src="/check.gif"/></th>
+
 				{{/if}}
 		    	<th height="100%" align="left">
 		    		<div class="questionTextBox">
