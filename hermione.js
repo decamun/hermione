@@ -61,12 +61,14 @@ Template.questionTemplate.helpers({
       Questions.update(this._id, {$inc: {upvotes: 1}});
       Questions.update(this._id, {$inc: {score: 1}});
       Session.set("questionsUpvoted", Session.get("questionsUpvoted").concat(this._id));
-      debugger;
 
+//redundant shit
       var downvotedindex = Session.get("questionsDownvoted").indexOf(this._id);
       if(downvotedindex > -1) {
         Questions.update(this._id, {$inc: {downvotes: -1}});
-        Session.set("questionsDownvoted", Session.get("questionsDownvoted").splice(downvotedindex, 1));
+        var downvotedSet = Session.get("questionsDownvoted");
+        downvotedSet.splice(downvotedindex, 1);
+        Session.set("questionsDownvoted", downvotedSet);
       }
       //some quick code to uncomment if you want to delete things:
       //Questions.remove(this._id);
@@ -81,6 +83,11 @@ Template.questionTemplate.helpers({
       Session.set("questionsAnswered", Session.get("questionsAnswered").concat(this._id));
       //some quick code to uncomment if you want to delete things:
       //Questions.remove(this._id);
+
+      //decide whether question is fully answered
+      if(this.answered / this.upvotes > 0.25 && this.answered > 5) {
+        Questions.remove(this._id);
+      }
     }
   });
 
@@ -93,10 +100,14 @@ Template.questionTemplate.helpers({
       Questions.update(this._id, {$inc: {score: -1}});
       Session.set("questionsDownvoted", Session.get("questionsDownvoted").concat(this._id));
 
+
+//redundant shit
       var upvotedindex = Session.get("questionsUpvoted").indexOf(this._id);
       if(upvotedindex > -1) {
-        Questions.update(this._id, {$inc: {downvotes: -1}});
-        Session.set("questionsUpvoted", Session.get("questionsUpvoted").splice(upvotedindex, 1));
+        Questions.update(this._id, {$inc: {upvotes: -1}});
+        var upvotedSet = Session.get("questionsUpvoted");
+        upvotedSet.splice(upvotedindex, 1);
+        Session.set("questionsUpvoted", upvotedSet);
       }
 
       //decide whether question is below threshold
