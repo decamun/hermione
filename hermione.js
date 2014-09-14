@@ -3,7 +3,15 @@
 
 Questions = new Mongo.Collection("questions");
 
+<<<<<<< HEAD
 var x = false;
+=======
+function submit() {
+    var questionText = document.getElementById("questionBox").value;
+    Questions.insert({text: questionText, upvotes: 1, downvotes: 0, score: 1});
+}
+
+>>>>>>> FETCH_HEAD
 
 if (Meteor.isClient) {
 
@@ -19,8 +27,12 @@ if (Meteor.isClient) {
     'click #submit': function () {
       // increment the counter when button is clicked
       //alert(document.getElementById("questionBox").value); // "something something";// + counter + " times";
+<<<<<<< HEAD
       var questionText = document.getElementById("questionBox").value;
       Questions.insert({text: questionText, upvotes: 1, downvotes: 0,answered: 0, score: 1});
+=======
+      submit();
+>>>>>>> FETCH_HEAD
     }
   });
 
@@ -86,11 +98,23 @@ Template.questionTemplate.helpers({
       if((this.downvotes / this.upvotes > 1.5) && this.downvotes > 5) {
         Questions.remove(this._id);
       }
+    }
+  });
 
 
+
+  document.onkeydown=function(){
+    if(window.event.keyCode=='13'){
+        submit();
+    }
+  }
+
+  
+
+  Template.questionTemplate.events({
+    'click div': function () {
       //some quick code to uncomment if you want to delete things:
       //Questions.remove(this._id);
-
     }
   });
 

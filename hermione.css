@@ -1,7 +1,17 @@
 /* CSS declarations go here */
 body {
-	background-color: #ffffff;
 	font-family: Avenir;
+	background-image: url(hermione.jpg);
+	background-size: 100%;
+	background-position: left top;
+	background-attachment: fixed;
+}
+
+#appName {
+	font-family: serif;
+	font-size: 400%;
+	font-style: oblique;
+
 }
 
 #questionAsker {
@@ -11,6 +21,7 @@ body {
 	width: 100%;
 	height: 50px;
 	padding: 10px 10px 10px 10px;
+	opacity: .8;
 }
 
 .questionBoard {
@@ -67,8 +78,9 @@ body {
 	font: italic;
 }
 
-#hand-thing {
+#hermione {
 	position: fixed;
-	left: 125px;
+	height: 100%;
+	width: auto;
 	z-index: -1;
 }
