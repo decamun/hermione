@@ -36,18 +36,30 @@
 <template name="questionTemplate">
 	<div class = "question">
 		
-		{{#if hasVoted}}
-			<button id="upButtonVoted">&#60;3</button>
-			<button id="downButtonVoted">&#60;*3</button>
-			<button id="answeredButtonVoted">:)</button>
-		{{else}}
-			<button id="upButton">&#60;3</button>
-			<button id="downButton">&#60;\3</button>
-			<button id="answeredButton">:)</button>
-		{{/if}}
-			<span class="questionText">{{text}}</span>
-	    	<span class="scoreSpan">score:{{score}}</span>
-	    	<span class="upVoteDownVote">^:{{upvotes}} v:{{downvotes}}</span>
+		<table>
+  			<tr>
+		    	{{#if hasVoted}}
+					<th width="25px"><img class = "icon" id="upButtonVoted" src="/heart-template-full.gif"></th>
+					<th width="25px"><img class = "icon" id="downButtonVoted" src="/x-mark-filled.gif"/></th>
+					<th width="25px"><img class = "icon" id="answeredButtonVoted" src="/check-filled.gif"/></th>
+				{{else}}
+					<th width="25px"><img class = "icon" id="upButton" src="/heart-template--not-full.gif"/></th>
+					<th width="25px"><img class = "icon" id="downButton" src="/x-mark.gif"/></th>
+					<th width="25px"><img class = "icon" id="answeredButton" src="/check.gif"/></th>
+				{{/if}}
+		    	<th height="100%" align="left">
+		    		<div class="questionTextBox">
+						<span style="font-size: 200%">"</span>
+						<span class="questionText">{{text}}</span>
+						<span style="font-size: 200%">"</span>
+					</div>
+				</th>
+		  </tr>
+		</table>
+
+		<span class="scoreSpan" style="position:absolute; bottom:0px">score:{{score}} ^:{{upvotes}} v:{{downvotes}}</span>
+	    	
+	    	
 	</div>
 </template>
 

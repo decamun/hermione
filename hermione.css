@@ -1,10 +1,11 @@
 /* CSS declarations go here */
 body {
 	background-color: #ffffff;
+	font-family: Avenir;
 }
 
 #questionAsker {
-	background-color: #555555;
+	background-color: #000000;
 	position: fixed;
 	bottom: 0px;
 	width: 100%;
@@ -16,22 +17,41 @@ body {
 	width: 50%;
 	position: absolute;
 	right: 23px;
-	
+	-webkit-transition: width .75s; /* For Safari 3.1 to 6.0 */
+    transition: width .75s;
 }
 
-.question {
-	height: 50px;
+.questionBoard:hover {
+	width: 75%;
+}
 
+.icon {
+	width: 25px;
+	height: 25px;
+}
+.question {
+	height: auto;
+	min-height: 50px;
+	font-size: 150%;
 	margin: 7px 7px 7px 7px;
-	padding: 5px 5px 5px 5px;
-	
+	padding: 15px 15px 15px 15px;
 	background-color: #CBEEF2;
 	width: 100%;
 	opacity: .7;
-	filter: blur(5px);
+	-webkit-transition: background-color .5s, opacity .5s, color .5s; /* For Safari 3.1 to 6.0 */
+    transition: background-color .5s, opacity .5s, color .5s;
+}
 
+.question:hover {
+	opacity: 0.9;
+	background-color: #000000; /* #CBE4F2 */
+	color: #FFFFFF;
+}
+
+.questionTextBox {
 
 }
+
 #questionWelcome {
 	background-color: #777777;
 }
