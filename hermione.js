@@ -16,7 +16,7 @@ if (Meteor.isClient) {
   Session.setDefault("questionsVoted", []);
   Session.setDefault("questionsUpvoted", []);
   Session.setDefault("questionsDownvoted", []);
-    Session.setDefault("questionsAnswered", []);
+  Session.setDefault("questionsAnswered", []);
 
   //runs when someone clicks the button next to the question box
   Template.questionBoxTemplate.events({
