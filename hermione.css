@@ -21,7 +21,7 @@ body {
 }
 
 #PennAppsMessage:hover {
-	opacity: .7;
+	/*opacity: .7;*/
 }
 
 #headerDiv {
@@ -33,7 +33,7 @@ body {
 }
 
 #header1Name {
-	color: #ffdfdd;
+	color: 'black';
 	font-style: oblique;
 }
 
